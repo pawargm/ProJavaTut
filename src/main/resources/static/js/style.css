@@ -1,0 +1,21 @@
+
+input[type='radio'] {
+	display: none
+}
+
+label {
+	color: #bbb;
+	font-size: 22px;
+	cursor: pointer;
+	transition: color .3s ease-in-out
+}
+
+label:hover{
+	color:#f2b600
+}
+label:hover ~ label{
+	color:#f2b600
+}
+input[type='radio']:checked ~ label{
+	color:#f2b600
+}

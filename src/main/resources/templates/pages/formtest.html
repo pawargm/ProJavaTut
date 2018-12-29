@@ -1,0 +1,39 @@
+
+	</br>
+	</br>
+	</br>
+	
+	
+	<div ng-controller="FormTest">
+					
+					<div class="list-group" ng-repeat="x in names">
+					 	
+					 	<li class="list-group-item list-group-item-success">
+					 	
+ 					
+ 						<label ng-model="tutid" ng-value={{x}} id="tutid" value={{ x.id }}>{{ x.id }}</label>
+ 						<label  ng-model="tuturl" ng-value={{x}} id="tuturl" value={{ x.tutUrl }}>{{ x.tutUrl }}</label>
+						<label  ng-model="techname" ng-value={{x}} id="techname" value={{ x.techName }}>{{ x.techName }}</label>
+								
+						
+						
+						
+						
+						  <button type="submit"  class="btn btn-warning" ng-click="CheckData(x.id,x.tutUrl)">rate it</button>
+						 
+						 </li>
+						 
+					</div>
+					
+					
+					{{msg}}
+					{{data}}
+					
+					<div class="list-group" ng-repeat="x in responsedata">
+						<label>{{x}}</label>
+						<label>{{x.userID}}</label>
+					</div>
+					
+																		
+	</div> 
+

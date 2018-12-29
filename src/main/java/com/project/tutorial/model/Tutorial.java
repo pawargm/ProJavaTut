@@ -1,6 +1,8 @@
 package com.project.tutorial.model;
+
 import java.util.LinkedList;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
@@ -13,13 +15,23 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class Tutorial {
 
 	@Id
-	private String id;
+	private int id;
 	private String techName;
 	@Indexed(name="tuturli",unique=true)
 	private String tutUrl;
 	private String userName;
 	private int rating;
 	private LinkedList<String> tags = null;
+	
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+		
+	}
 	
 	public String getTechName() {
 		return techName;

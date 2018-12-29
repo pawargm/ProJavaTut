@@ -11,16 +11,18 @@ import org.springframework.stereotype.Service;
 
 import com.project.user.model.User;
 import com.project.user.repository.UserRepository;
-
+import com.project.CounterService.CounterServiceId;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.project.CounterService.*;
 
 @Service
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
-	
+	@Autowired
+	private CounterServiceId cntservice;
 	//this is for checking valid email 
 	private static final String EMAIL_REGEX = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
 
@@ -39,15 +41,27 @@ public class UserService {
 	//To make new user account
 	public HttpStatus create(User u) {
 		
+		//CounterServiceId cntid = new CounterServiceId();
+		try {
 		if(isValidEmail(u.getEmail())){
 			String  encrypt_pwd = pwdEncryption(u.getPassword());
+			int num = cntservice.getNextSequence("users");
+			u.setId(num);
 			u.setPassword(encrypt_pwd);
 			u.setEmail(u.getEmail().toLowerCase());
 			userRepository.save(u);
+			
 			return HttpStatus.OK; //"Success:200";
 		}
 		else {
+			
+			cntservice.decrimentId("users");
 			return HttpStatus.ACCEPTED; //"InvalidEmailPattern:200";
+		}
+		}
+		catch(Exception e) {
+			cntservice.decrimentId("users");
+			return HttpStatus.BAD_REQUEST;
 		}
 	}
 	

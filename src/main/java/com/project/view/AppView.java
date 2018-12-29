@@ -88,6 +88,22 @@ public class AppView {
 		return mv;
 	}
 	
+	
+
+	@RequestMapping("/testingform")
+	public ModelAndView testform(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("formtest");
+		return mv;
+	}
+
+	@RequestMapping("/detailform")
+	public ModelAndView testform1(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("detailform");
+		return mv;
+	}
+	
 /*	@RequestMapping("/afterlogin")
 	public ModelAndView afterlogin(HttpSession session) {
 		ModelAndView mv = new ModelAndView();

@@ -5,6 +5,40 @@
     
 <h1>Tutorails</h1>
 
+<div ng-controller="TutorialRecom">
 <h3>{{message}}</h3>
-  </body>
+
+<!--  <h2>{{res}}</h2> -->
+
+</div>
+
+
+  <div ng-controller="FormActions">
+<h1>{{display}}</h1>
+  <form ng-submit="rateit()">
+ <!--  <tr ng-repeat="x in names">
+  
+  	<div class="form-group">
+    	<td><label ng-model="tutid">{{ x.id }}</label></td>
+    </div>
+    <div class="form-group">
+    	<td><label  ng-model="tuturl">{{ x.tutUrl }}</label></td>
+    </div>
+    <div class="form-group">
+    	<td><label  ng-model="techname">{{ x.techName }}</label></td>
+    </div>
+   		<td><button type="submit"  class="btn btn-warning">rate it</button></td>
+ 	
+  </tr>-->
+  <button type="submit"  class="btn btn-warning" ng-click="rateit()">rate it</button>
+   </form>
+   </div>
+
+
+
+
+
+
+ </body>
+
 </html>

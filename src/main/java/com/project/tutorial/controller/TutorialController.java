@@ -49,4 +49,15 @@ public class TutorialController {
 		return tutorialService.getTutOnTag(lsttag);
 	}
 	
+	@RequestMapping(value="/tut/all",method=RequestMethod.GET)
+	public List<Tutorial> getAllTut(){
+		return tutorialService.getAllTutorials();
+	}
+	
+	@RequestMapping(value="/tut/tutbyurl",method=RequestMethod.POST)
+	public Tutorial getTutByUrl(@RequestBody Tutorial tut){
+		//System.out.println(tut.getTutUrl());
+		return tutorialService.getTutorialByUrl(tut.getTutUrl());
+		
+	}
 }

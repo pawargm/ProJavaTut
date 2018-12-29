@@ -15,5 +15,6 @@ public interface TutorialRepository extends MongoRepository<Tutorial,String>{
 	@Query("{ 'tags' : {$all : ?0} }")
 	public List<Tutorial> findByTags(LinkedList<String> lst);
 	public List<Tutorial> findByTags(String lst);
+	public Tutorial findByTutUrl(String tuturl);
 
 }

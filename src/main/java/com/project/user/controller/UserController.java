@@ -38,6 +38,34 @@ public class UserController {
 		return "";
 	}
 	
+	@RequestMapping(value="/dummy",method=RequestMethod.GET)
+	public int dummy(HttpSession session) {
+		System.out.println("dsffs");
+		System.out.println("==============Checking Session================ first by getvalue, secound by get attribute");
+		System.out.println(session.getValue("usrsession"));
+		System.out.println(session.getAttribute("usrsession"));
+		
+		System.out.println(session.getValue("usrsession").toString());
+		System.out.println(session.getAttribute("usrsession"));
+		
+		int userID = Integer.parseInt(session.getValue("usrsession").toString());
+		
+		return userID;
+	}
+	
+	
+	@RequestMapping(value="/userid",method=RequestMethod.GET)
+	public String getUserID(HttpSession session) {
+		String tmp = session.getAttribute("usersession").toString();
+		if(session.getAttribute("usrsession") != null)
+			return tmp;
+		else {
+			return "notpresent";
+		}
+	}
+
+	
+	
 	@RequestMapping(value="/create",method=RequestMethod.POST)
 	public HttpStatus create(@RequestBody User user) {
 		System.out.println(user.getFirstName());
@@ -52,7 +80,11 @@ public class UserController {
 		
 		session.setAttribute("usrsession", "logout");
 		if(tmp.equals("Success:200")) {
-			session.setAttribute("usrsession", "login");
+			//session.setAttribute("usrsession", "login");
+			
+			int id = userService.getByUserName(u.getUserName()).getId();
+			System.out.println("Session Store Value============: "+id);
+			session.setAttribute("usrsession","1");
 			return HttpStatus.OK;
 		}
 		else {
@@ -112,6 +144,15 @@ public class UserController {
 				}
 			
 		}
+		/*if(session.getValue("usrsession")!=null){
+		 * 	if(session.getValue("usrsession").equals("logout")){
+		 * 		return HttpStatus.NOT_ACCEPTABLE;
+		 * 		}
+		 * 	else{
+		 * 		return HttpStatus.OK;
+		 * }
+		 *
+		 */
 		return HttpStatus.NOT_ACCEPTABLE;
 	}
 

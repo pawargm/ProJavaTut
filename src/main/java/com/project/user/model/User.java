@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class User {
 
 	@Id
-	private String id;
+	private int  id;
 	private String firstName;
 	private String lastName;
 	@Indexed(name="emaili",unique=true)
@@ -20,6 +20,14 @@ public class User {
 	@Indexed(name="usernamei",unique=true)
 	private String userName;
 	private String password;
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getFirstName() {
 		return firstName;

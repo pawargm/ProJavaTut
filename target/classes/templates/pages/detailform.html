@@ -1,0 +1,24 @@
+
+	</br>
+	</br>
+	</br>
+	
+	
+	<div ng-controller="FormTest">
+		
+		<h3>Title: {{title}}</h3>
+		<br>
+		<label>{{id}} {{tuturl}}</label><br>
+		<label>Submitted By: {{author}}</label><br>
+		<label>Tags: {{tags}}</label>
+		
+		<p>{{msg}} {{rating_data}} {{double_rating}}</p>
+		
+		<label>Rating: </label><input type="text" ng-model="rating_tut" id="tbox"> / 5 </label>
+		
+		<button type="submit"  class="btn btn-warning" ng-click="Rateit(rating_tut)">rate it</button>
+		
+		<p>{{send_data}}</p>
+																				
+	</div> 
+
